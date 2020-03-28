@@ -10,10 +10,18 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 ​
 const render = require("./lib/htmlRenderer");
 ​
+//const employees = []
+
 const questions = [
     {
+        type: "list",
+        message: "What is your role ",
+        choices: ["Engineer", "Intern", "Manager"],
+        name: "role",
+    },
+    {
         type: "input",
-        message: "What is your ",
+        message: "What is your name ",
         name: "name",
     },
     { 
@@ -26,22 +34,72 @@ const questions = [
     message: "What is your email",
     name: "email",
 },
+
 {
-    type: "list",
-    message: "do you want to add another role",
-    choices: ["No", "Engineer", "Intern"],
-    name: "role"
+    type: "confirm",
+    message: "add another employee",
+    name: "confirm",
+
 }
-
 ]
+// const engineer = [
+// {
+//     type: "input",
+//     message: "Github",
+//     name: "github",
+// }
+// ]
+// const intern = [
+//     {
+//     type: "input",
+//     messgae: "What is your office #?",
+//     name: "office",
+//     }
+// ]
+// const manager = [
+//     {
+// type: "input",
+// message: "",
+// name: "",
+//     }
+// ]
+    
+// const employee = () => {
 
+// }
+
+// const handleRoles = async () => {
+//     switch(role){
+//         case("engineer"):
+//         return await inquirer.prompt(engineer)
+//         case("intern"):
+//         return await inquirer.prompt(intern)
+//         default:
+//             return console.log()
+// }
 
 
 
 ​const init = async () => {
-    const res = await inquirer.prompt(questions)
-    console.log(res)
-}
+  
+    try {
+    const res =  inquirer.prompt(questions)
+//     if (res.confirm){
+//         console.log("confirm true")
+//         init()
+//     } else {
+//         employees.push(res)
+//         console.log(employees)
+//         console.log("something happens")
+//     }
+} catch (error){
+        console.error(error)
+//     }
+//     console.log(employees)
+// }
+console.log(questions)
+}}
+
 init()
 
 // Write code to use inquirer to gather information about the development team members,
