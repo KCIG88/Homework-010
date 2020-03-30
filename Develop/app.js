@@ -26,7 +26,7 @@ const questions = [
         type: "list",
         name: "role",
         message: "What is your role?",
-        choices: ["Manager", "Engineer", "Intern"]
+        choices: ["Manager", "Engineer", "Intern"],
     },
     {
         type: "input",
@@ -46,7 +46,7 @@ const questions = [
         message: "What is your email?",
     }
 ]
-//engineerQuestion
+
 const engineerQ = [
     {
         type: "input",
@@ -70,7 +70,7 @@ const managerQ = [
 
     }
 ]
-const engineer = async (data) =>{
+const engineer = async (data) => {
     const res = await inquirer.prompt(engineerQ)
     const e = new Engineer(data.name, data.id, data.email, res.github)
     employees.push(e)
@@ -78,7 +78,7 @@ const engineer = async (data) =>{
     init()
 }
  
-const manager = async (data) =>{
+const manager = async (data) => {
     const res = await inquirer.prompt(managerQ)
     const e = new Manager(data.name, data.id, data.email, res.officeNumber)
     employees.push(e)
@@ -86,8 +86,8 @@ const manager = async (data) =>{
     init()
 }
 
-const intern = async (data) =>{
-    const res = await inquirer.prompt(engineerQ)
+const intern = async (data) => {
+    const res = await inquirer.prompt(internQ)
     const e = new Intern(data.name, data.id, data.email, res.school)
     employees.push(e)
     console.log(employees)
@@ -100,12 +100,11 @@ render (employees)
 
 const init = async () => {
 const choice = await inquirer.prompt(confirm)
-if (choice.confirm){
-    console.log(res)
-
-    const res = await inquirer.prompt(questions)
-    switch(res.role){
-        case "Manager":
+console.log(choice)
+if (choice.confirm) {
+    const res = await inquirer.prompt(questions)   
+    switch (res.role) {
+        case "Manager":           
              return manager(res)
             case "Engineer":
                 return engineer(res)
@@ -113,11 +112,10 @@ if (choice.confirm){
                      return intern(res)
                      default:
                          console.log("Default")
-                         break
+                         break;
     }
 } else {
-    exit(employees)
-    console.log('Choice is false')
-}
+    
+    }
 }
 init()
