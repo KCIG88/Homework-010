@@ -26,6 +26,6 @@
     "manager": "^1.0.9"
   },
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.9.0"
   }
 }
